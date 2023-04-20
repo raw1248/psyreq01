@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import axios from "axios";
 
 // const soundPath = "/PMR_5_v2.mp3";
 const soundPath = "/freesound.mp3";
@@ -9,6 +10,16 @@ export default function Home() {
   const [btnText, setBtnText] = useState("Play");
   const soundRef = useRef(null);
 
+  function markTime() {
+    axios.get("https://script.google.com/macros/s/AKfycbwN8HU26QZekCC6M0riOwJEotnDWhrieyVQvEj4DIpw8KtID7H-vHkiva_FCCKSlozm/exec")
+      .then(() => {
+        console.log('marked');
+      })
+      .catch(() => {
+        console.log('mark failed');
+      });
+  }
+
   function manageAudio() {
     console.log('currentTime :>> ', soundRef.current?.currentTime);
     if (play) {
@@ -18,16 +29,14 @@ export default function Home() {
     } else {
       if (btnText == "Play") {
         if (soundRef.current.currentTime == 0) {
-          // TODO: api mark time
-          console.log('mark');
+          markTime();
         }
         soundRef.current?.play();
         setPlay(true);
         setBtnText("Pause");
       }
       else if (btnText == "Done") {
-        // TODO: api mark time
-        console.log('mark');
+        markTime();
         setBtnText("Play");
       }
     }
