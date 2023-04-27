@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
 
-const soundPath = "/PMR_5_v2.mp3";
+const soundPath = "/PMR_7_no_arms.mp3";
 const samplePath = "/sample_audio.mp3";
 // const soundPath = "/freesound.mp3";
 const palettes = ["black", "#323E45", "#3A4E51", "#5A786F", "#8BA88E", "#CCD2C6", "white"];
